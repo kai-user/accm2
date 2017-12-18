@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -n
+#!/bin/bash
 
 # Copyright (c) Microsoft Corporation. All rights reserved.
 #
@@ -14,13 +14,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-use 5.012;
-
-state $skip = 0;
-if (m#^diff --git a/(.*) .*$#) {
-    $skip = ($1 !~ m#^pkg/cloudprovider/providers/azure/#);
-    print STDERR "# skipping file $1\n" if $skip;
-}
-next if $skip;
-
-print s#/cloudprovider/providers/azure/#/azureprovider/#gr;
+[ -z $1 ] && { echo "$0 <tag> [head]" ; exit 1; }
+git tag -a $1 -m "Release $1" $2

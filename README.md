@@ -42,8 +42,9 @@ make update
 ```
 
 Please also check following development docs:
+- [Component versioning](docs/component-versioning.md)
 - [Dependency management](docs/dependency-management.md)
-
+- [E2E Tests](docs/e2e-tests.md)
 
 ## Contributing
 

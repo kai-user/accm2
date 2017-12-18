@@ -23,9 +23,19 @@ function update-cloudprovider {
     rm -rf $AZURE_PROVIDER_DIR
     mkdir -p $AZURE_PROVIDER_DIR
     cp -aT vendor/k8s.io/kubernetes/pkg/cloudprovider/providers/azure $AZURE_PROVIDER_DIR
-    rm $AZURE_PROVIDER_DIR/{BUILD,OWNERS}
+    find $AZURE_PROVIDER_DIR \( -name BUILD -o -name OWNERS \) -exec rm {} +
     find $AZURE_PROVIDER_DIR -name '*.go' -exec perl -i -pe \
-        'print "Copyright (c) Microsoft Corporation. All rights reserved.\n" if /Authors.$/;s/^package azure\K$/provider/' {} \;
+        's/^package azure\K$/provider/;' {} \;
+    
+    pushd $AZURE_PROVIDER_DIR
+    for file in azure.go azure_test.go
+    do
+        perl -i -pe \
+            's#k8s.io/kubernetes/pkg/cloudprovider/providers/azure#github.com/Azure/kubernetes-azure-cloud-controller-manager/pkg/azureprovider#;' $file
+        gofmt -s $file > bak
+        mv bak $file
+    done
+    popd
 }
 
 function glide-update-staging-mirror {
@@ -48,7 +58,8 @@ function glide-update-staging-mirror {
 
 # Install dependencies, first round
 glide update --no-recursive
-update-cloudprovider
+# Uncomment when moving cloud provider code
+# update-cloudprovider
 glide-update-staging-mirror
 
 # A first round, update install dependencies
@@ -56,5 +67,5 @@ glide update
 # A second round, this minimizes package in 'glide.lock'
 glide update --strip-vendor
 # Clean up, turn on use-lock-file, otherwise test dependencies are removed
-glide-vc --use-lock-file --only-code --no-tests
+glide-vc --use-lock-file --only-code --no-tests > /dev/null
  
