@@ -1,7 +1,7 @@
 FROM golang:1.9.1-stretch AS build_kubernetes
 # rsync: building k8s
 RUN apt update && apt install -y --no-install-recommends rsync
-ARG K8S_VERSION=v1.10.0-alpha.0
+ARG K8S_VERSION=v1.10.0-alpha.1
 WORKDIR /go/src/k8s.io/kubernetes
 RUN git clone -b $K8S_VERSION https://github.com/kubernetes/kubernetes . \
     && make WHAT=cmd/kubectl \

@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package unstructured provides conversion from runtime objects
-// to map[string]interface{} representation.
-package unstructured // import "k8s.io/apimachinery/pkg/conversion/unstructured"
+package v1beta1
+
+type MutatingWebhookConfigurationExpansion interface{}
+
+type ValidatingWebhookConfigurationExpansion interface{}
