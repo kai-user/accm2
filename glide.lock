@@ -1,11 +1,10 @@
-hash: 08aa704a8d54e7fbd630e9e8f3b3dd2ea2982881a78a27ff93eecc2dbd5ba2ea
-updated: 2018-01-11T11:25:36.568408813+08:00
+hash: 69f35800ff8a8b7e1ead83fa503d277d8927ee020a7e32b2fe3519aa62440174
+updated: 2018-01-11T17:10:03.491600057+08:00
 imports:
 - name: github.com/Azure/azure-sdk-for-go
-  version: 509eea43b93cec2f3f17acbe2578ef58703923f8
+  version: 934e2462aeb6e0c14186dcfeedd73a026d1b8eeb
   subpackages:
   - arm/compute
-  - arm/containerregistry
   - arm/disk
   - arm/network
   - arm/storage
@@ -23,6 +22,22 @@ imports:
   version: 3ac7bf7a47d159a033b107610db8a1b6575507a4
   subpackages:
   - quantile
+- name: github.com/cloudflare/cfssl
+  version: db0d0650b6496bfe8061ec56a92edd32d8e75c30
+  subpackages:
+  - auth
+  - certdb
+  - config
+  - crypto/pkcs7
+  - csr
+  - errors
+  - helpers
+  - helpers/derhelpers
+  - info
+  - log
+  - ocsp/config
+  - signer
+  - signer/local
 - name: github.com/davecgh/go-spew
   version: 782f4967f2dc4564575ca782fe2d04090b5faca8
   subpackages:
@@ -64,6 +79,7 @@ imports:
   subpackages:
   - jsonpb
   - proto
+  - protoc-gen-go/descriptor
   - ptypes
   - ptypes/any
   - ptypes/duration
@@ -137,8 +153,8 @@ imports:
   version: 0bfd3b39853cdde5762efda92289f14b0ac0491b
   subpackages:
   - vhd
-- name: github.com/satori/uuid
-  version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
 - name: github.com/spf13/cobra
   version: f62e98d28ab7ad31d707ba837a966378465c7b57
   subpackages:
@@ -193,7 +209,7 @@ imports:
 - name: gopkg.in/yaml.v2
   version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
 - name: k8s.io/api
-  version: 7336381893444f97ceb490c913c465ad10baa77a
+  version: 959931af05ce81685aab2204fe091b9d3e3b6327
   subpackages:
   - admissionregistration/v1alpha1
   - admissionregistration/v1beta1
@@ -224,11 +240,11 @@ imports:
   - storage/v1alpha1
   - storage/v1beta1
 - name: k8s.io/apiextensions-apiserver
-  version: 75834f51f455e48ccc4abac83310e5d90efdb1fc
+  version: 6e7c0b284e27704f62ce91cd26e116293a1255f9
   subpackages:
   - pkg/features
 - name: k8s.io/apimachinery
-  version: a0a90928ec61450a28c014e80604a905b16d41de
+  version: 73a5f238fcc1f483bbd04f9ed6a22f39a319a6fa
   subpackages:
   - pkg/api/equality
   - pkg/api/errors
@@ -278,7 +294,7 @@ imports:
   - third_party/forked/golang/json
   - third_party/forked/golang/reflect
 - name: k8s.io/apiserver
-  version: a5d665027b88e4c6246dfe30520c6a62f2c43d4b
+  version: c9961869b805882790a94486d0e70dcd21b1ab8c
   subpackages:
   - pkg/authentication/authenticator
   - pkg/authentication/serviceaccount
@@ -289,7 +305,7 @@ imports:
   - pkg/util/flag
   - pkg/util/logs
 - name: k8s.io/client-go
-  version: b7e3a2576a73d60504746802b42e91817d130418
+  version: 385fabbfc19c593601592a33eaa9194224d01b94
   subpackages:
   - discovery
   - informers
@@ -418,10 +434,11 @@ imports:
   - pkg/util
   - pkg/util/proto
 - name: k8s.io/kubernetes
-  version: 4956e65d5926c02840cc0854d423ac31af29065f
+  version: 8406a547d496cfad6b70ba0fc00908e99cc13ebb
   subpackages:
   - cmd/cloud-controller-manager/app
   - cmd/cloud-controller-manager/app/options
+  - cmd/controller-manager/app/options
   - pkg/api/legacyscheme
   - pkg/api/service
   - pkg/api/v1/node
@@ -443,6 +460,7 @@ imports:
   - pkg/client/leaderelectionconfig
   - pkg/cloudprovider
   - pkg/cloudprovider/providers/azure
+  - pkg/cloudprovider/providers/azure/auth
   - pkg/controller
   - pkg/controller/cloud
   - pkg/controller/route
@@ -452,6 +470,11 @@ imports:
   - pkg/kubelet/apis
   - pkg/kubelet/types
   - pkg/master/ports
+  - pkg/scheduler/algorithm
+  - pkg/scheduler/algorithm/priorities/util
+  - pkg/scheduler/api
+  - pkg/scheduler/schedulercache
+  - pkg/scheduler/util
   - pkg/security/apparmor
   - pkg/serviceaccount
   - pkg/util/configz
@@ -469,11 +492,6 @@ imports:
   - pkg/version
   - pkg/volume
   - pkg/volume/util
-  - plugin/pkg/scheduler/algorithm
-  - plugin/pkg/scheduler/algorithm/priorities/util
-  - plugin/pkg/scheduler/api
-  - plugin/pkg/scheduler/schedulercache
-  - plugin/pkg/scheduler/util
 - name: k8s.io/utils
   version: aedf551cdb8b0119df3a19c65fde413a13b34997
   subpackages:

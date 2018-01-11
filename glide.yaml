@@ -1,7 +1,9 @@
 package: github.com/Azure/kubernetes-azure-cloud-controller-manager
 import:
 - package: k8s.io/kubernetes
-  version: v1.10.0-alpha.1
+  version: 8406a54
+- package: github.com/Azure/azure-sdk-for-go
+  version: v12.1.0-beta
 testImport:
 - package: github.com/stretchr/testify
   version: v1.1.4
